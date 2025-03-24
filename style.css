@@ -42,7 +42,7 @@ body {
   line-height: 1.8;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* === Skip Link === */
