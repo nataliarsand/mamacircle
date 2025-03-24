@@ -1,221 +1,221 @@
 :root {
-    --primary:   #1e2235;
-    --text:      #f4f8fb;
-    --surface:   #e5edf4;
-    --headline:  #6b9ac4;
-    --accent:    #a2c5d8;
-  }
-    
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
+    /* === COLORS === */
+    --background: #fdfaf7;
+    --text: #1e1e1e;
+    --headline: #111;
+    --accent: #e6b8aa;
+    --surface: #ffffff;
+    --surface-muted: #f3f1ee;
+    --border: #ddd;
   
+    /* === FONT SCALE === */
+    --font-base: 18px;
+    --font-scale: 1.5;
+
+    /* Scaled sizes */
+    --font-sm: 0.95rem;            /* ~17px fixed for legibility */
+    --font-md: var(--font-base);   /* 18px */
+    --font-lg: calc(var(--font-md) * var(--font-scale));    /* ~27px */
+    --font-xl: calc(var(--font-lg) * var(--font-scale));    /* ~40px */
+    --font-xxl: calc(var(--font-xl) * var(--font-scale));   /* ~60px */
+    }
+  
+  html {
+    font-size: var(--font-base);
+  }
   
   body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: var(--primary);
+    background-color: var(--background);
     color: var(--text);
-    line-height: 1.7;
+    font-family: 'Inter', sans-serif;
+    font-size: var(--font-md);
+    line-height: 1.8;
+    margin: 0;
     padding: 2rem 1rem;
   }
   
   main {
-    max-width: 740px;
+    max-width: 760px;
     margin: 0 auto;
   }
   
-  /* Typography */
-  
-  h1, h2 {
-    font-family: Georgia, serif;
+  /* === Headings === */
+  h1, h2, h3 {
+    font-family: 'EB Garamond', serif;
     color: var(--headline);
+    font-weight: 600;
+    line-height: 1.3;
     margin-bottom: 0.5rem;
   }
   
   h1 {
-    font-size: 3rem;
+    font-size: var(--font-xxl);
     text-align: center;
   }
   
   h2 {
-    font-size: 1.8rem;
-    margin-top: 2.5rem;
+    font-size: var(--font-xl);
+    margin-top: 3rem;
+    text-align: center;
   }
   
-  p, li {
-    font-size: 1.15rem;
-    margin-bottom: 1rem;
-    color: var(--text);
+  h3 {
+    font-size: var(--font-lg);
   }
   
-  ul {
-    list-style: none;
-    padding-left: 0;
-    margin-left: 24px;
-  }
-  
-  ul li::before {
-    content: "•";
-    font-weight: bold;
-    display: inline-block;
-    width: 1rem;
-    margin-left: -1rem;
-    color: var(--accent);
-  }
-  
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  a:hover {
-    text-decoration: none;
-    color: var(--headline);
-  }
-  
-  /* Tagline */
-  
-  .tagline {
-    font-size: 1.1rem;
-    margin: 1rem auto 2rem;
+  /* === Intro === */
+  .strapline {
     text-align: center;
     font-style: italic;
-  }
-  
-  /* Sections */
-  
-  .intro, .manifesto, .wall {
-    margin-bottom: 2.5rem;
-  }
-  
-  .wall,
-.invite-banner {
-  margin-top: 3.5rem;
-}
-
-
-  .poetic {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
-    border-left: 4px solid var(--headline);
-    font-style: italic;
-    line-height: 1.8;
+    font-size: var(--font-sm);
+    color: #666;
     margin-bottom: 2rem;
-    border-radius: 6px;
   }
   
-  .note {
-    font-size: 1rem;
-    margin-top: 1.5rem;
-    font-style: italic;
+  .intro p {
+    margin-bottom: 1.2rem;
+  }
+  
+  /* === Manifesto Section === */
+  .manifesto {
+    margin: 4rem 0;
+  }
+  
+  .manifesto h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .manifesto-box {
+    background: var(--surface-muted);
+    padding: 2rem;
+    border-left: 5px solid var(--accent);
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .manifesto-box blockquote {
+    font-family: 'Crimson Pro', serif;
+    font-size: var(--font-lg);
+    line-height: 2;
+    margin: 0;
+  }
+  
+  .manifesto-divider {
+    border: none;
+    border-top: 1px solid var(--accent);
+    margin: 2rem 0 1.5rem;
+  }
+  
+  .values-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    font-size: var(--font-md);
+    line-height: 1.8;
+  }
+  
+  .values-list li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .values-list li::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
     color: var(--accent);
+    font-size: 0.9rem;
   }
   
-  /* Circle Wall */
+  .manifesto-box .note {
+    font-size: var(--font-sm);
+    font-style: italic;
+    margin-top: 2rem;
+    color: #555;
+    border-top: 1px solid var(--accent);
+    padding-top: 1rem;
+  }
+  
+  /* === Mama Cards Carousel === */
+  .wall {
+    margin-top: 4rem;
+  }
   
   .circle-list {
     display: flex;
     overflow-x: auto;
     gap: 1rem;
-    padding: 1rem 0;
+    padding-bottom: 1rem;
     scroll-snap-type: x mandatory;
   }
   
   .mama-card {
-    background-color: var(--surface); /* soft card background */
-    color: var(--primary);            /* dark readable text */
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
-    text-align: left;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease;
-  }
-  
-  .mama-card p,
-  .mama-card strong,
-  .mama-card a {
-    color: var(--primary); /* ensures all text is readable inside the light card */
-  }
-  
-  .mama-card a {
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  
-  .mama-card a:hover {
-    color: var(--accent);
-  }
-  
-  .mama-card .message {
-    font-style: italic;
-    color: #555;
-    margin-top: 0.6rem;
-  }
-  
-  
-  /* Support Banner */
-  
-  .invite-banner {
-    background-color: var(--headline);
-    color: var(--primary);
-    border-radius: 12px;
-    padding: 2rem;
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  }
-  
-  .invite-banner h2 {
-    margin-bottom: 1rem;
-    margin-top: 0;
-    color: var(--primary);
-  }
-  
-  .invite-banner p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary);
-  }
-  
-  /* Join Button */
-  
-  .join-button {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.25rem;
-    background-color: var(--primary);
-    color: var(--headline);
+    flex: 0 0 250px;
+    scroll-snap-align: start;
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 6px;
-    font-weight: 500;
-    text-decoration: none;
-    border: none;
-    transition: background 0.3s ease, color 0.3s ease;
+    padding: 1rem;
+    box-shadow: none;
   }
   
-  .join-button:hover {
-    background-color: var(--accent);
-    color: var(--primary);
+  .mama-card h3 {
+    font-size: var(--font-md);
+    margin-bottom: 0;
   }
+  
+  .mama-card span {
+    font-size: var(--font-sm);
+    color: #888;
+  }
+  
+  .mama-card .handle {
+    font-size: var(--font-sm);
+    color: #555;
+  }
+  
+  .mama-card .quote {
+    font-style: italic;
+    font-size: var(--font-sm);
+    margin-top: 0.5rem;
+  }
+  
+  /* === CTA Section === */
+  .cta {
+    background: var(--surface-muted);
+    padding: 2rem;
+    margin: 3rem 0 2rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    font-size: var(--font-md);
 
+    h2 {
+        margin: 0;
+    }
+    .button {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.6rem 1.2rem;
+        background: var(--headline);
+        color: #fff;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: var(--font-sm);
+    }
+}
   
+  /* === Footer === */
   .site-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
     margin-top: 4rem;
-    padding: 2rem 1rem;
-    font-size: 0.95rem;
-    color: var(--text);
-    opacity: 0.9;
+    font-size: var(--font-sm);
+    color: #555;
   }
   
   .footer-grid {
@@ -239,35 +239,86 @@
     line-height: 1.6;
     margin-bottom: 1rem;
   }
-
-  .footer-right p {
-    font-size: 0.85rem;
-    font-style: italic;
-  }
   
   .site-footer code {
-    background: rgba(255, 255, 255, 0.08);
+    background: #eee;
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    color: var(--accent);
+    font-size: var(--font-sm);
+    color: var(--headline);
   }
   
   .site-footer a {
-    color: var(--accent);
+    color: var(--headline);
     font-weight: 500;
-    text-decoration: none;
-  }
-  
-  .site-footer a:hover {
     text-decoration: underline;
   }
   
   .site-footer .signature {
     margin-top: 2rem;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: var(--font-sm);
     opacity: 0.7;
+  }
+  
+
+
+
+
+
+  .privacy-page {
+    max-width: 740px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    font-size: var(--font-md);
+    line-height: 1.8;
+  }
+  
+  .privacy-page h1 {
+    font-size: var(--font-xl);
+    font-family: 'EB Garamond', serif;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .privacy-page .last-updated {
+    text-align: center;
+    font-size: var(--font-sm);
+    margin-bottom: 2rem;
+    color: #666;
+  }
+  
+  .privacy-page h2 {
+    font-size: var(--font-lg);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: 'EB Garamond', serif;
+  }
+  
+  .privacy-page p {
+    margin-bottom: 1rem;
+  }
+  
+  .privacy-page a {
+    color: var(--headline);
+    font-weight: 500;
+    text-decoration: underline;
+  }
+  
+  .privacy-page code {
+    background-color: #eee;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+  }
+  
+  .privacy-page .closing-note {
+    margin-top: 3rem;
+    font-style: italic;
+    text-align: center;
+    font-size: var(--font-sm);
+    color: #666;
   }
   
