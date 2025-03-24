@@ -471,3 +471,56 @@ h3 {
   font-size: var(--font-sm);
   opacity: 0.7;
 }
+
+.site-footer .disclaimer-line {
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+
+/* === Safety Section === */
+.safety {
+  background-color: var(--surface-muted);
+  border-left: 5px solid var(--accent);
+  padding: 2rem;
+  margin: 4rem auto;
+  max-width: 700px;
+  font-size: var(--font-md);
+  line-height: 1.8;
+}
+
+.safety h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: var(--font-xl);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--headline);
+}
+
+.safety p {
+  margin-bottom: 1rem;
+}
+
+.safety ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.safety li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.safety li::before {
+  content: "\f06a"; /* Font Awesome exclamation-circle */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
