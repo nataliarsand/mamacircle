@@ -129,6 +129,10 @@ section {
   padding: 2rem;
   border: 1px solid var(--border);
   border-radius: 6px;
+
+  &.highlighted {
+    border-color: var(--accent);
+  }
 }
 .section-muted {
   background: var(--surface-muted);
@@ -273,14 +277,11 @@ section {
   }
 }
 
-/* === Manifesto Section === */
-.manifesto .note {
+.note {
   font-size: var(--font-sm);
   font-style: italic;
-  margin-bottom: 2rem;
+  padding: 0 2rem 0.5rem 2rem;
   color: #555;
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 1rem;
 }
 
 /* === Tabs === */
@@ -448,30 +449,6 @@ section {
 
 /* === Join Banner === */
 .join-banner {
-  background-color: var(--surface-muted);
-  border-left: 5px solid var(--accent);
   padding: 1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  border-radius: 6px;
-  flex-wrap: wrap;
 }
-.join-banner p {
-  margin: 0;
-  font-size: var(--font-sm);
-  font-weight: 500;
-}
-.join-banner .button {
-  padding: 0.4rem 0.8rem;
-  font-size: var(--font-xs);
-  font-weight: 600;
-  white-space: nowrap;
-  background: var(--accent);
-  color: #fff;
-}
-.join-banner .button:hover {
-  background: var(--headline);
-  color: var(--surface);
-}
+
