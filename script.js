@@ -61,3 +61,16 @@ toggleButton.addEventListener('click', () => {
   toggleButton.setAttribute('aria-expanded', !expanded);
   nav.classList.toggle('open');
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const langLinks = document.querySelectorAll('.lang-link');
+  const currentPage = window.location.pathname;
+
+  langLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (currentPage.endsWith(href)) {
+      link.classList.add('current');
+    }
+  });
+});

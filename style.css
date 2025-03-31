@@ -293,6 +293,35 @@ section {
   }
 }
 
+.language-switcher {
+  font-size: var(--font-sm);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.language-switcher a {
+  color: var(--headline);
+  text-decoration: none;
+  border: none;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.language-switcher a:hover,
+.language-switcher a:focus {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.language-switcher .lang-link.current {
+  font-weight: 600;
+  opacity: 1;
+  color: var(--accent);
+}
+
+
 .note {
   font-size: var(--font-sm);
   font-style: italic;
