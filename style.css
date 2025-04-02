@@ -46,6 +46,11 @@ body {
   overflow-x: hidden;
 }
 
+hr {
+  border: 1px solid var(--border);
+  margin: 1rem 0;
+}
+
 /* === Typography === */
 h1, h2, h3 {
   font-family: 'EB Garamond', serif;
@@ -256,9 +261,11 @@ section {
   a {
     border: none;
   }
+}
+
+.site-nav ul, .quote-list {
   li {
-    margin: 0;
-    padding: 0;
+    margin: .5rem 0;
     &::before {
       content: none;
     }
@@ -367,7 +374,8 @@ section {
 .circle-list {
   display: flex;
   gap: 1rem;
-  overflow: visible;
+  overflow-x: auto;
+  overflow-y: visible !important;
   padding-bottom: 1rem;
   scroll-snap-type: x mandatory;
 }
