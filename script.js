@@ -68,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const href = link.getAttribute('href');
     if (currentPage.endsWith(href)) {
       link.classList.add('current');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
     }
   });
 

@@ -328,6 +328,10 @@ section {
   color: var(--accent);
 }
 
+.language-switcher .separator {
+  opacity: 0.6;
+}
+
 
 .note {
   font-size: var(--font-sm);
