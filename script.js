@@ -56,11 +56,13 @@ document.addEventListener("DOMContentLoaded", function () {
 const toggleButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.site-nav');
 
-toggleButton.addEventListener('click', () => {
-  const expanded = toggleButton.getAttribute('aria-expanded') === 'true' || false;
-  toggleButton.setAttribute('aria-expanded', !expanded);
-  nav.classList.toggle('open');
-});
+if (toggleButton && nav) {
+  toggleButton.addEventListener('click', () => {
+    const expanded = toggleButton.getAttribute('aria-expanded') === 'true' || false;
+    toggleButton.setAttribute('aria-expanded', !expanded);
+    nav.classList.toggle('open');
+  });
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
