@@ -303,9 +303,20 @@ section {
 .language-switcher {
   font-size: var(--font-sm);
   font-weight: 500;
+}
+
+.language-switcher ul {
+  list-style: none;
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.language-switcher li + li {
+  border-left: 1px solid var(--headline);
+  padding-left: 0.25rem;
 }
 
 .language-switcher a {
