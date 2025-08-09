@@ -73,12 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const showMoreButtons = document.querySelectorAll('.show-more');
-  showMoreButtons.forEach(button => {
+  showMoreButtons.forEach((button) => {
     button.setAttribute('aria-expanded', 'false');
     button.addEventListener('click', () => {
       const card = button.closest('.mama-card');
       const expanded = card.classList.toggle('expanded');
-      button.setAttribute('aria-expanded', expanded);
+      button.setAttribute('aria-expanded', expanded.toString());
+      button.textContent = expanded ? 'Show less' : 'Show more';
     });
   });
 });

@@ -414,13 +414,26 @@ section {
 }
 .show-more {
   font-size: var(--font-xs);
-  color: var(--text);
-  text-decoration: underline;
+  color: var(--accent);
   cursor: pointer;
   margin-top: 0.3rem;
   background: none;
   border: none;
   padding: 0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.show-more::after {
+  content: '▼';
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.mama-card.expanded .show-more::after {
+  transform: rotate(-180deg);
 }
 
 /* === Contact Info === */
