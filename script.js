@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Language highlighting
   const langLinks = document.querySelectorAll('.lang-link');
-  const currentPage = window.location.pathname;
+  const currentPage = window.location.pathname.replace(/\/$/, '/index.html');
 
   langLinks.forEach((link) => {
     const href = link.getAttribute('href');
