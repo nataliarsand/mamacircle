@@ -72,12 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const showMoreButtons = document.querySelectorAll('.show-more');
-  showMoreButtons.forEach(button => {
-    button.setAttribute('aria-expanded', 'false');
+  showMoreButtons.forEach((button) => {
     button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
       const card = button.closest('.mama-card');
-      const expanded = card.classList.toggle('expanded');
-      button.setAttribute('aria-expanded', expanded);
+      card.classList.toggle('expanded', !expanded);
+      button.setAttribute('aria-expanded', String(!expanded));
     });
   });
 });
