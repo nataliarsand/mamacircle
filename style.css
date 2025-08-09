@@ -155,16 +155,41 @@ section {
 /* === Utility Classes === */
 
 .header {
+  margin: 0;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  background: linear-gradient(180deg, rgba(231,140,140,0.15), var(--background));
+
+  .logo {
+    width: 220px;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    margin: 0.5rem 0;
+  }
+
+  .strapline {
+    font-weight: 300;
+    font-size: var(--font-lg);
+    margin-bottom: 1rem;
+  }
+
+  .intro {
+    max-width: 600px;
+  }
 
   p {
     text-align: left;
   }
-  .strapline {
-    font-weight: 100;
-  }
-  .logo {
-    width: 260px;
+
+  .button {
+    margin-top: 1.5rem;
   }
 }
 
