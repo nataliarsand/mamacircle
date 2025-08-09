@@ -78,13 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Language highlighting
   const langLinks = document.querySelectorAll('.lang-link');
-  const currentPage = window.location.pathname.replace(/\/$/, '/index.html');
+  const currentLang = document.documentElement.lang;
 
   langLinks.forEach((link) => {
-    const href = link.getAttribute('href');
-    if (currentPage.endsWith(href)) {
+    const linkLang = link.getAttribute('lang');
+    if (linkLang === currentLang) {
       link.classList.add('current');
       link.setAttribute('aria-current', 'page');
+    } else {
+      link.classList.remove('current');
+      link.removeAttribute('aria-current');
     }
   });
 
