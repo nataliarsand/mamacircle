@@ -255,10 +255,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  .internal a {
-    margin: 0 1rem;
-  }
 }
 .site-branding a {
   font-family: 'EB Garamond', serif;
@@ -274,19 +270,29 @@ section {
   list-style: none;
   margin: 0;
   padding: 0;
-
-  a {
-    border: none;
-  }
+  align-items: center;
 }
 
-.site-nav ul, .quote-list {
-  li {
-    margin: .5rem 0;
-    &::before {
-      content: none;
-    }
-  }
+.site-nav ul li {
+  margin: 0;
+  padding: 0;
+  position: static;
+}
+
+.site-nav ul li::before {
+  content: none;
+}
+
+.site-nav ul a {
+  border: none;
+}
+
+.quote-list li {
+  margin: .5rem 0;
+}
+
+.quote-list li::before {
+  content: none;
 }
 .menu-toggle {
   display: none;
@@ -320,20 +326,9 @@ section {
 .language-switcher {
   font-size: var(--font-sm);
   font-weight: 500;
-}
-
-.language-switcher ul {
-  list-style: none;
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.language-switcher li + li {
-  border-left: 1px solid var(--headline);
-  padding-left: 0.25rem;
 }
 
 .language-switcher a {
@@ -342,6 +337,12 @@ section {
   border: none;
   opacity: 0.6;
   transition: opacity 0.2s ease;
+}
+
+.language-switcher a + a {
+  border-left: 1px solid var(--headline);
+  padding-left: 0.25rem;
+  margin-left: 0.25rem;
 }
 
 .language-switcher a:hover,
