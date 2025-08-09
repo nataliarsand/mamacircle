@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tabs.forEach((t) => {
         t.classList.remove('active');
         t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
       });
 
       contents.forEach((c) => {
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       this.classList.add('active');
       this.setAttribute('aria-selected', 'true');
+      this.setAttribute('tabindex', '0');
       const content = document.getElementById(target);
       content.classList.add('active');
       content.removeAttribute('hidden');
@@ -43,11 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial ARIA setup
   contents.forEach((c) => {
     c.setAttribute('role', 'tabpanel');
-    if (!c.classList.contains('active')) c.setAttribute('hidden', 'true');
+    if (!c.classList.contains('active')) {
+      c.setAttribute('hidden', 'true');
+    } else {
+      c.removeAttribute('hidden');
+    }
   });
 
   tabs.forEach((tab) => {
-    tab.setAttribute('tabindex', '0');
+    const isActive = tab.classList.contains('active');
+    tab.setAttribute('tabindex', isActive ? '0' : '-1');
+    tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
 
   // Navigation toggle
