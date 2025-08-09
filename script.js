@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const theme = params.get('theme');
+  if (theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+
   const tabs = document.querySelectorAll('.tab');
   const contents = document.querySelectorAll('.tab-content');
 
@@ -62,11 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleButton = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
 
-  toggleButton.addEventListener('click', () => {
-    const expanded = toggleButton.getAttribute('aria-expanded') === 'true' || false;
-    toggleButton.setAttribute('aria-expanded', !expanded);
-    nav.classList.toggle('open');
-  });
+  if (toggleButton && nav) {
+    toggleButton.addEventListener('click', () => {
+      const expanded = toggleButton.getAttribute('aria-expanded') === 'true' || false;
+      toggleButton.setAttribute('aria-expanded', !expanded);
+      nav.classList.toggle('open');
+    });
+  }
 
   // Language highlighting
   const langLinks = document.querySelectorAll('.lang-link');
