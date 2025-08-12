@@ -1,13 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
   const theme = params.get('theme');
-  const lang = params.get('lang');
+  const lang = params.get('lang') || 'en';
+
   if (theme) {
     document.documentElement.setAttribute('data-theme', theme);
   }
-  if (lang) {
-    document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+
+  let translations = {};
+  try {
+    const res = await fetch(`lang/${lang}.json`);
+    if (res.ok) {
+      translations = await res.json();
+    }
+  } catch (e) {
+    console.error('Error loading translations', e);
   }
+
+  const t = (key) => translations[key] || '';
+
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const key = el.getAttribute('data-i18n');
+    const value = t(key);
+    if (value) {
+      el.innerHTML = value;
+    }
+  });
 
   const tabs = document.querySelectorAll('.tab');
   const contents = document.querySelectorAll('.tab-content');
@@ -35,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
       content.removeAttribute('hidden');
     });
 
-    // Keyboard accessibility
     tab.addEventListener('keydown', function (e) {
       const index = Array.from(tabs).indexOf(document.activeElement);
       if (e.key === 'ArrowRight') {
@@ -52,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Initial ARIA setup
   contents.forEach((c) => {
     c.setAttribute('role', 'tabpanel');
     if (!c.classList.contains('active')) {
@@ -68,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
 
-  // Navigation toggle
   const toggleButton = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
 
@@ -98,13 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Language highlighting
   const langLinks = document.querySelectorAll('.lang-link');
-  const currentLang = document.documentElement.lang;
-  const showMoreText =
-    currentLang === 'pt'
-      ? { more: 'Ver mais', less: 'Ver menos' }
-      : { more: 'Show more', less: 'Show less' };
+  const currentLang = lang;
+  const showMoreText = {
+    more: t('show_more') || 'Show more',
+    less: t('show_less') || 'Show less',
+  };
 
   langLinks.forEach((link) => {
     const linkLang = link.getAttribute('lang');
@@ -139,11 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const translationTags = document.querySelectorAll('.translation-tag');
   if (translationTags.length) {
-    const translationPrefix =
-      currentLang === 'pt' ? 'traduzido do' : 'translated from';
+    const translationPrefix = t('translation_from') || (currentLang === 'pt' ? 'traduzido do' : 'translated from');
     translationTags.forEach((tag) => {
       const source = (tag.dataset.sourceLang || 'EN').toUpperCase();
       tag.textContent = `(${translationPrefix} ${source})`;
     });
   }
 });
+

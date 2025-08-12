@@ -18,14 +18,6 @@
   --font-xxl: calc(var(--font-xl) * var(--font-scale));
 }
 
-html[lang="en"] [lang="pt"] {
-  display: none;
-}
-
-html[lang="pt"] [lang="en"] {
-  display: none;
-}
-
 /* === Dark Mode === */
 
 [data-theme="dark"] {
