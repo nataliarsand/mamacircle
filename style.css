@@ -471,10 +471,12 @@ section {
 .quote-wrapper {
   overflow: hidden;
   margin-top: 0.5rem;
-  max-height: 10.5em;
+  padding-top: 1rem;
+  max-height: calc(10.5em + 1rem);
+  transition: max-height 0.3s ease;
 }
 .mama-card.expanded .quote-wrapper {
-  max-height: 100em;
+  max-height: calc(100em + 1rem);
 }
 .show-more {
   font-size: var(--font-xs);
@@ -638,7 +640,6 @@ section {
     transform: translateY(-4px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   }
-  .quote-wrapper { transition: max-height 0.3s ease; }
 }
 
 @media (prefers-reduced-motion: reduce) {
