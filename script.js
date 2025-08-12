@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const theme = params.get('theme');
+  const lang = params.get('lang');
   if (theme) {
     document.documentElement.setAttribute('data-theme', theme);
+  }
+  if (lang) {
+    document.documentElement.setAttribute('lang', lang);
   }
 
   const tabs = document.querySelectorAll('.tab');
