@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = button.closest('.mama-card');
       card.classList.toggle('expanded', !expanded);
       button.setAttribute('aria-expanded', String(!expanded));
+      button.textContent = expanded ? 'Show more' : 'Show less';
     });
   });
 });
