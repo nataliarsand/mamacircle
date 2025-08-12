@@ -158,27 +158,26 @@ section {
 .header {
   margin: 0;
   min-height: 100vh;
-  padding: clamp(2rem, 6vw, 4rem) 1rem;
+  padding: clamp(1rem, 4vw, 2rem) 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   text-align: center;
   background: linear-gradient(180deg, rgba(231,140,140,0.15), var(--background));
 
   .logo {
     width: 150px;
-    margin-bottom: 1rem;
   }
 
   h1 {
-    margin: 0.5rem 0;
+    margin: 0;
   }
 
   .strapline {
     font-weight: 300;
     font-size: var(--font-lg);
-    margin-bottom: 1rem;
   }
 
   .intro {
@@ -190,7 +189,7 @@ section {
   }
 
   .button {
-    margin-top: 1.5rem;
+    margin-top: 0;
   }
 }
 
