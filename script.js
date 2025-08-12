@@ -97,6 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Language highlighting
   const langLinks = document.querySelectorAll('.lang-link');
   const currentLang = document.documentElement.lang;
+  const showMoreText =
+    currentLang === 'pt'
+      ? { more: 'Ver mais', less: 'Ver menos' }
+      : { more: 'Show more', less: 'Show less' };
 
   langLinks.forEach((link) => {
     const linkLang = link.getAttribute('lang');
@@ -116,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (quote && quote.offsetHeight < 165) {
       button.style.display = 'none';
+    } else {
+      button.textContent = showMoreText.more;
     }
 
     button.addEventListener('click', () => {
@@ -123,7 +129,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = button.closest('.mama-card');
       card.classList.toggle('expanded', !expanded);
       button.setAttribute('aria-expanded', String(!expanded));
-      button.textContent = expanded ? 'Show more' : 'Show less';
+      button.textContent = expanded ? showMoreText.more : showMoreText.less;
     });
   });
+
+  const translationTags = document.querySelectorAll('.translation-tag');
+  if (translationTags.length) {
+    const translationPrefix =
+      currentLang === 'pt' ? 'traduzido do' : 'translated from';
+    translationTags.forEach((tag) => {
+      const source = (tag.dataset.sourceLang || 'EN').toUpperCase();
+      tag.textContent = `(${translationPrefix} ${source})`;
+    });
+  }
 });
