@@ -76,6 +76,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (nav && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        if (toggleButton) {
+          toggleButton.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+  });
+
   // Language highlighting
   const langLinks = document.querySelectorAll('.lang-link');
   const currentLang = document.documentElement.lang;
