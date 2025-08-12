@@ -51,6 +51,7 @@
 html {
   font-size: 100%;
   scroll-padding-top: 5rem;
+  scroll-behavior: smooth;
 }
 body {
   background: var(--background);
@@ -231,7 +232,7 @@ section {
 }
 .button:hover {
   background-color: var(--accent);
-  color: var(--text);
+  color: #fff;
 }
 .quote {
   font-style: italic;
@@ -627,7 +628,6 @@ section {
     
 /* === Motion Preferences === */
 @media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
   a { transition: color 0.2s ease; }
   .language-switcher a { transition: opacity 0.2s ease; }
   .mama-card {
