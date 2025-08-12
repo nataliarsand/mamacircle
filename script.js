@@ -111,6 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const showMoreButtons = document.querySelectorAll('.show-more');
   showMoreButtons.forEach((button) => {
+    const wrapper = document.getElementById(button.getAttribute('aria-controls'));
+    const quote = wrapper ? wrapper.querySelector('.quote') : null;
+
+    if (quote && quote.offsetHeight < 165) {
+      button.style.display = 'none';
+    }
+
     button.addEventListener('click', () => {
       const expanded = button.getAttribute('aria-expanded') === 'true';
       const card = button.closest('.mama-card');
