@@ -472,7 +472,7 @@ section {
   overflow: hidden;
   margin-top: 0.5rem;
   padding-top: 1rem;
-  max-height: calc(10.5em + 1rem);
+  max-height: 165px;
   transition: max-height 0.3s ease;
 }
 .mama-card.expanded .quote-wrapper {
