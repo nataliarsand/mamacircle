@@ -407,6 +407,16 @@ section {
   color: #555;
 }
 
+.translation-tag {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: var(--font-xs);
+  background: var(--surface-muted);
+  color: #555;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
 /* === Tabs === */
 .tabs {
   display: flex;
