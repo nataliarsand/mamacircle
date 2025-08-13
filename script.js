@@ -132,6 +132,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
+  document.querySelectorAll('a[href*=".html"]:not(.lang-link)').forEach((link) => {
+    const url = new URL(link.href, window.location.origin);
+    if (theme) {
+      url.searchParams.set('theme', theme);
+    }
+    url.searchParams.set('lang', lang);
+    link.href = url.toString();
+  });
+
   const showMoreButtons = document.querySelectorAll('.show-more');
   showMoreButtons.forEach((button) => {
     const wrapper = document.getElementById(button.getAttribute('aria-controls'));
