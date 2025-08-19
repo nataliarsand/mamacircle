@@ -639,8 +639,9 @@ section {
   }
   .mama-card {
     flex: 0 0 300px;
+  }
+}
 
-    
 /* === Motion Preferences === */
 @media (prefers-reduced-motion: no-preference) {
   a { transition: color 0.2s ease; }
