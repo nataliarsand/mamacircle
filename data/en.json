@@ -1,0 +1,27 @@
+{
+    "lang": "en",
+    "site": {
+      "title": "Mama Circle 💞",
+      "description": "A soft place to land in motherhood.",
+      "strapline": "#mamacircle 💞 — a soft place to land in motherhood"
+    },
+    "nav": {
+      "manifesto": "Manifesto",
+      "how": "How it works",
+      "stories": "Stories",
+      "code": "Code of Care"
+    },
+    "manifesto": {
+      "title": "The Mama Circle Manifesto",
+      "values": [
+        "When you're tired — we offer understanding.",
+        "When you're overwhelmed — we offer calm.",
+        "When you're unsure — we offer stories.",
+        "When you're lonely — we offer connection.",
+        "When you're lost — we offer each other.",
+        "And if we’re nearby — we’ll bring tea, hold your baby, clean your kitchen, or simply give you a hug."
+      ],
+      "note": "These are the values of Mama Circle — not about being perfect, but being present."
+    }
+  }
+  

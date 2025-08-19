@@ -1,0 +1,13 @@
+<section class="header">
+  <img class="logo" src="{{ logo | default: '/assets/images/mandala-circle.png' }}" alt="Mama Circle - Mandala Logo"/>
+  <h1>Mama Circle <span class="strapline"> — {{ tagline | default: 'a soft place to land in motherhood' }}</span></h1>
+
+  <div class="intro">
+    <p>{{ paragraph1 | default: "If you're a new mama feeling overwhelmed, emotional, or simply in need of a kind word — this space is for you." }}</p>
+    <p>{{ paragraph2 | default: "Mama Circle is not a group or an app. It's a quiet signal — a simple way for mamas to find one another through" }} <span class="hashtag">#mamacircle 💞</span>.</p>
+    <p>{{ paragraph3 | default: "You might come across someone who says:" }}<br />
+      <em class="quote">I’m part of <span class="hashtag">#mamacircle 💞</span> — you can always reach out to me (if it feels safe for you).</em><br />
+      <strong>{{ closing | default: "And they’ll mean it." }}</strong>
+    </p>
+  </div>
+</section>

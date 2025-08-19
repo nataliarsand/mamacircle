@@ -176,8 +176,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let autoPlay = setInterval(next, intervalTime);
 
     function update() {
-      const gap = parseFloat(getComputedStyle(track).gap) || 0;
-      const cardWidth = cards[0].offsetWidth + gap;
+      const cardWidth = cards[0].offsetWidth;
       track.style.transform = `translateX(-${index * cardWidth}px)`;
     }
 
@@ -220,6 +219,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     carousel.addEventListener('mouseleave', resume);
     carousel.addEventListener('focusin', pause);
     carousel.addEventListener('focusout', resume);
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        update();
+      }, 250);
+    });
   }
 
   const translationTags = document.querySelectorAll('.translation-tag');
@@ -249,4 +256,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     fadeEls.forEach((el) => observer.observe(el));
   }
 });
-
