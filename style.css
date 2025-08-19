@@ -192,8 +192,11 @@ section {
   .button {
     margin-top: 0;
   }
-}
+  }
 
+#how-it-works {
+  min-height: 100vh;
+}
 
 .divider {
   border: none;

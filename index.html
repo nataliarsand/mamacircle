@@ -79,8 +79,23 @@
   </section>
 
   <main id="main" role="main" class="wrapper" tabindex="-1">
-    <section id="manifesto" class="left-accent section-box" aria-labelledby="manifesto-heading">
-      <h2 id="manifesto-heading" data-i18n="manifesto_heading"></h2>
+    <section id="how-it-works">
+      <h2 data-i18n="how_heading"></h2>
+
+      <div class="tabs" role="tablist" aria-label="Mama Circle content">
+        <button class="tab active" data-tab="manifesto" role="tab" aria-selected="true" aria-controls="manifesto" id="tab-manifesto">
+          <i class="fa-solid fa-scroll" aria-hidden="true"></i> <span data-i18n="tab_manifesto"></span>
+        </button>
+        <button class="tab" data-tab="new-mamas" role="tab" aria-selected="false" aria-controls="new-mamas" id="tab-new">
+          <i class="fa-solid fa-baby" aria-hidden="true"></i> <span data-i18n="tab_new"></span>
+        </button>
+        <button class="tab" data-tab="supporters" role="tab" aria-selected="false" aria-controls="supporters" id="tab-supporters">
+          <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> <span data-i18n="tab_supporters"></span>
+        </button>
+      </div>
+
+      <div class="tab-content left-accent section-box active" id="manifesto" role="tabpanel" aria-labelledby="tab-manifesto">
+        <h3 data-i18n="manifesto_heading"></h3>
         <ul class="blockquote">
           <li data-i18n="manifesto_li1"></li>
           <li data-i18n="manifesto_li2"></li>
@@ -101,21 +116,9 @@
         </ul>
 
         <p class="note" data-i18n="values_note"></p>
-    </section>
-
-    <section id="how-it-works">
-      <h2 data-i18n="how_heading"></h2>
-
-      <div class="tabs" role="tablist" aria-label="Mama Circle roles">
-        <button class="tab active" data-tab="new-mamas" role="tab" aria-selected="true" aria-controls="new-mamas" id="tab-new">
-          <i class="fa-solid fa-baby" aria-hidden="true"></i> <span data-i18n="tab_new"></span>
-        </button>
-        <button class="tab" data-tab="supporters" role="tab" aria-selected="false" aria-controls="supporters" id="tab-supporters">
-          <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> <span data-i18n="tab_supporters"></span>
-        </button>
       </div>
 
-      <div class="tab-content section-box highlighted active" id="new-mamas" role="tabpanel" aria-labelledby="tab-new">
+      <div class="tab-content section-box highlighted" id="new-mamas" role="tabpanel" aria-labelledby="tab-new" hidden>
         <h3 data-i18n="new_mamas_heading"></h3>
         <p data-i18n="new_mamas_p1"></p>
         <p data-i18n="new_mamas_quote"></p>
@@ -139,7 +142,7 @@
         </ul>
       </div>
 
-        <p class="note" data-i18n="how_note"></p>
+      <p class="note" data-i18n="how_note"></p>
     </section>
 
 
