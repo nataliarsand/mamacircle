@@ -103,6 +103,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       const targetId = link.getAttribute('href').substring(1);
       const target = document.getElementById(targetId);
       if (target) {
+        const tabButton = document.querySelector(`.tab[data-tab="${targetId}"]`);
+        if (tabButton) {
+          tabButton.click();
+        }
         target.scrollIntoView({ behavior: 'smooth' });
       }
       if (nav && nav.classList.contains('open')) {
