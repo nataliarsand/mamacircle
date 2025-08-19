@@ -460,6 +460,7 @@ section {
 .circle-carousel {
   position: relative;
   overflow: hidden;
+  padding: 0 1rem;
 }
 .carousel-track {
   display: flex;
@@ -467,6 +468,7 @@ section {
 }
 .carousel-track .mama-card {
   flex: 0 0 100%;
+  max-width: none;
 }
 .mama-card {
   max-width: 250px;
