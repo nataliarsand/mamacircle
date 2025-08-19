@@ -165,6 +165,61 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
+  const carousel = document.querySelector('.circle-carousel');
+  if (carousel) {
+    const track = carousel.querySelector('.carousel-track');
+    const cards = track.querySelectorAll('.mama-card');
+    const prevBtn = carousel.querySelector('.carousel-control.prev');
+    const nextBtn = carousel.querySelector('.carousel-control.next');
+    let index = 0;
+    const intervalTime = 5000;
+    let autoPlay = setInterval(next, intervalTime);
+
+    function update() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function next() {
+      index = (index + 1) % cards.length;
+      update();
+    }
+
+    function prev() {
+      index = (index - 1 + cards.length) % cards.length;
+      update();
+    }
+
+    function reset() {
+      pause();
+      autoPlay = setInterval(next, intervalTime);
+    }
+
+    function pause() {
+      clearInterval(autoPlay);
+      autoPlay = null;
+    }
+
+    function resume() {
+      if (!autoPlay) {
+        autoPlay = setInterval(next, intervalTime);
+      }
+    }
+
+    nextBtn.addEventListener('click', () => {
+      next();
+      reset();
+    });
+    prevBtn.addEventListener('click', () => {
+      prev();
+      reset();
+    });
+
+    carousel.addEventListener('mouseenter', pause);
+    carousel.addEventListener('mouseleave', resume);
+    carousel.addEventListener('focusin', pause);
+    carousel.addEventListener('focusout', resume);
+  }
+
   const translationTags = document.querySelectorAll('.translation-tag');
   if (translationTags.length) {
     const translationPrefix = t('translation_from') || (currentLang === 'pt' ? 'traduzido do' : 'translated from');
@@ -172,6 +227,24 @@ document.addEventListener('DOMContentLoaded', async () => {
       const source = (tag.dataset.sourceLang || 'EN').toUpperCase();
       tag.textContent = `(${translationPrefix} ${source})`;
     });
+  }
+
+  const fadeEls = document.querySelectorAll('.section-box, .mama-card');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReduced) {
+    fadeEls.forEach((el) => el.classList.add('fade-in'));
+  } else {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          obs.unobserve(entry.target);
+        }
+      });
+    });
+
+    fadeEls.forEach((el) => observer.observe(el));
   }
 });
 
