@@ -667,6 +667,7 @@ section {
   }
 }
 
+
 /* === Animations === */
 .fade-in {
   animation: fadeInUp 0.6s ease-out forwards;
@@ -682,6 +683,7 @@ section {
     transform: translateY(0);
   }
 }
+
 
 /* === Motion Preferences === */
 @media (prefers-reduced-motion: no-preference) {
