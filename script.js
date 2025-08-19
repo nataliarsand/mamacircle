@@ -228,5 +228,23 @@ document.addEventListener('DOMContentLoaded', async () => {
       tag.textContent = `(${translationPrefix} ${source})`;
     });
   }
+
+  const fadeEls = document.querySelectorAll('.section-box, .mama-card');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReduced) {
+    fadeEls.forEach((el) => el.classList.add('fade-in'));
+  } else {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          obs.unobserve(entry.target);
+        }
+      });
+    });
+
+    fadeEls.forEach((el) => observer.observe(el));
+  }
 });
 
