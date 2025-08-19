@@ -176,7 +176,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     let autoPlay = setInterval(next, intervalTime);
 
     function update() {
-      track.style.transform = `translateX(-${index * 100}%)`;
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      const cardWidth = cards[0].offsetWidth + gap;
+      track.style.transform = `translateX(-${index * cardWidth}px)`;
     }
 
     function next() {
