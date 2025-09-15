@@ -364,69 +364,107 @@ section {
 
 /* === Mama Cards === */
 .wall {
-  margin: 4rem auto;
-  max-width: 900px;
-  padding: 0 1rem;
-  text-align: center;
+  margin-top: 4rem;
 }
-.wall > p {
-  max-width: 640px;
-  margin: 0.5rem auto 2rem;
-  font-size: var(--font-sm);
-  color: #555;
+
+.circle-carousel {
+  position: relative;
+  overflow: hidden;
+  padding: 0 3.5rem;
+  margin-bottom: 2rem;
 }
-.circle-list {
+
+.carousel-track {
   display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  padding: 0.5rem 0 2rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  transition: transform 0.5s ease;
+}
+
+.carousel-track .mama-card {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mama-card {
-  flex: 0 0 280px;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.25rem;
+  border: none;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(20px);
+  padding: 1rem;
   font-size: var(--font-sm);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  scroll-snap-align: start;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  }
-  h3 {
-    font-size: var(--font-md);
-    margin: 0 0 0.25rem;
-  }
-  span {
-    font-size: var(--font-xs);
-    color: #777;
-  }
+  max-width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
+
+.mama-card h3 {
+  font-size: var(--font-md);
+  margin: 0 0 0.25rem;
+}
+
+.mama-card span {
+  font-size: var(--font-xs);
+  color: #777;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  z-index: 10;
+}
+
+.carousel-control:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.carousel-control.prev {
+  left: 0.5rem;
+}
+
+.carousel-control.next {
+  right: 0.5rem;
+}
+
 .quote-wrapper {
   overflow: hidden;
   margin-top: 0.5rem;
-  max-height: 10.5em;
+  padding-top: 1rem;
+  max-height: 165px;
   transition: max-height 0.3s ease;
 }
+
 .mama-card.expanded .quote-wrapper {
-  max-height: 100em;
-}
-.show-more {
-  font-size: var(--font-xs);
-  color: var(--accent);
-  cursor: pointer;
-  margin-top: 0.5rem;
-  align-self: flex-start;
+  max-height: calc(100em + 1rem);
 }
 
+.show-more {
+  font-size: var(--font-xs);
+  color: var(--text);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+}
 
 /* === Contact Info === */
 .contact-info {
