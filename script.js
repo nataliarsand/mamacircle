@@ -168,65 +168,127 @@ document.addEventListener('DOMContentLoaded', async () => {
   const carousel = document.querySelector('.circle-carousel');
   if (carousel) {
     const track = carousel.querySelector('.carousel-track');
-    const cards = track.querySelectorAll('.mama-card');
+    const cards = Array.from(track.querySelectorAll('.mama-card'));
     const prevBtn = carousel.querySelector('.carousel-control.prev');
     const nextBtn = carousel.querySelector('.carousel-control.next');
+    const viewport = carousel.querySelector('.carousel-viewport');
+    const pagination = carousel.querySelector('.carousel-pagination');
     let index = 0;
-    const intervalTime = 5000;
-    let autoPlay = setInterval(next, intervalTime);
+    const intervalTime = 6000;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let autoPlay = !prefersReducedMotion && cards.length > 1 ? setInterval(() => next(false), intervalTime) : null;
 
-    function update() {
-      const cardWidth = cards[0].offsetWidth;
-      track.style.transform = `translateX(-${index * cardWidth}px)`;
+    if (cards.length <= 1) {
+      prevBtn?.setAttribute('disabled', 'true');
+      nextBtn?.setAttribute('disabled', 'true');
     }
 
-    function next() {
-      index = (index + 1) % cards.length;
+    if (pagination && cards.length > 1) {
+      cards.forEach((card, cardIndex) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('role', 'tab');
+        const title = card.querySelector('h3')?.textContent?.trim() || String(cardIndex + 1);
+        dot.setAttribute('aria-label', `Show testimonial ${title}`);
+        dot.setAttribute('aria-pressed', cardIndex === index ? 'true' : 'false');
+        dot.addEventListener('click', () => {
+          goTo(cardIndex);
+          reset();
+        });
+        pagination.appendChild(dot);
+      });
+    }
+
+    function getStep() {
+      if (!cards.length) return 0;
+      const cardRect = cards[0].getBoundingClientRect();
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0');
+      return cardRect.width + gap;
+    }
+
+    function updatePagination() {
+      if (!pagination) return;
+      pagination.querySelectorAll('button').forEach((btn, btnIndex) => {
+        btn.setAttribute('aria-pressed', btnIndex === index ? 'true' : 'false');
+      });
+    }
+
+    function update() {
+      if (!cards.length) return;
+      if (index >= cards.length) {
+        index = 0;
+      } else if (index < 0) {
+        index = cards.length - 1;
+      }
+      const step = getStep();
+      track.style.transform = `translateX(${-step * index}px)`;
+      updatePagination();
+    }
+
+    function goTo(newIndex) {
+      index = (newIndex + cards.length) % cards.length;
       update();
+    }
+
+    function next(shouldReset = true) {
+      goTo(index + 1);
+      if (shouldReset) reset();
     }
 
     function prev() {
-      index = (index - 1 + cards.length) % cards.length;
-      update();
+      goTo(index - 1);
+      reset();
+    }
+
+    function pause() {
+      if (autoPlay) {
+        clearInterval(autoPlay);
+        autoPlay = null;
+      }
+    }
+
+    function resume() {
+      if (!autoPlay && !prefersReducedMotion && cards.length > 1) {
+        autoPlay = setInterval(() => next(false), intervalTime);
+      }
     }
 
     function reset() {
       pause();
-      autoPlay = setInterval(next, intervalTime);
+      resume();
     }
 
-    function pause() {
-      clearInterval(autoPlay);
-      autoPlay = null;
+    nextBtn?.addEventListener('click', () => next());
+    prevBtn?.addEventListener('click', () => prev());
+
+    const interactiveElements = [carousel, prevBtn, nextBtn];
+    if (pagination) {
+      interactiveElements.push(...pagination.querySelectorAll('button'));
     }
 
-    function resume() {
-      if (!autoPlay) {
-        autoPlay = setInterval(next, intervalTime);
-      }
-    }
-
-    nextBtn.addEventListener('click', () => {
-      next();
-      reset();
+    interactiveElements.filter(Boolean).forEach((el) => {
+      el.addEventListener('mouseenter', pause);
+      el.addEventListener('mouseleave', resume);
+      el.addEventListener('focusin', pause);
+      el.addEventListener('focusout', resume);
     });
-    prevBtn.addEventListener('click', () => {
-      prev();
-      reset();
-    });
-
-    carousel.addEventListener('mouseenter', pause);
-    carousel.addEventListener('mouseleave', resume);
-    carousel.addEventListener('focusin', pause);
-    carousel.addEventListener('focusout', resume);
 
     let resizeTimer;
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        update();
-      }, 250);
-    });
+      resizeTimer = setTimeout(update, 150);
+    };
+
+    if ('ResizeObserver' in window && viewport) {
+      const observer = new ResizeObserver(() => update());
+      observer.observe(viewport);
+    } else {
+      window.addEventListener('resize', handleResize);
+    }
+    window.addEventListener('orientationchange', update);
+
+    update();
   }
 
   const translationTags = document.querySelectorAll('.translation-tag');
