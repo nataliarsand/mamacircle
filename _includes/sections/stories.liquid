@@ -2,9 +2,11 @@
   <h2 data-i18n="circle_heading"></h2>
   <p data-i18n="circle_intro"></p>
 
-  <div class="circle-carousel">
-    <button class="carousel-control prev" aria-label="Previous">&#10094;</button>
-    <div class="carousel-track">
+  <div class="circle-carousel" role="region" aria-label="Circle stories carousel">
+    <div class="carousel-inner">
+      <button class="carousel-control prev" type="button" aria-label="Previous testimonial">&#10094;</button>
+      <div class="carousel-viewport">
+        <div class="carousel-track">
       <article class="mama-card">
         <h3>Nati<span>, Perth, Scotland</span></h3>
         <div class="quote-wrapper" id="quote-nati">
@@ -28,8 +30,11 @@
         </div>
         <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-ana" data-i18n="show_more"></button>
       </article>
+        </div>
+      </div>
+      <button class="carousel-control next" type="button" aria-label="Next testimonial">&#10095;</button>
     </div>
-    <button class="carousel-control next" aria-label="Next">&#10095;</button>
+    <div class="carousel-pagination" role="tablist" aria-label="Jump to testimonial"></div>
   </div>
 
   <div class="join-banner left-accent section-muted section-box" role="complementary">
