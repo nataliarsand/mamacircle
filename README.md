@@ -27,13 +27,34 @@ The project embraces simplicity and accessibility:
 
 ## Tech Stack
 
-Built as a lightweight static site with modern web standards:
+Built with simplicity and maintainability in mind:
 
-- **Vanilla JavaScript** (ES6+) - No frameworks, no dependencies
+- **[Eleventy](https://www.11ty.dev/)** - Minimal static site generator
+- **Nunjucks** templates for reusable components and layouts
+- **Vanilla JavaScript** (ES6+) - No runtime frameworks
 - **CSS3** with custom properties for theming
 - **Dynamic i18n** system for seamless language switching
 - **Mobile-first responsive design**
 - **GitHub Pages** for zero-cost hosting
+
+### Project Structure
+
+```
+mamacircle/
+├── src/                    # Source templates
+│   ├── _includes/         # Nunjucks layouts & components
+│   │   ├── layouts/      # Page templates
+│   │   └── components/   # Reusable UI components
+│   ├── index.njk         # Homepage template
+│   ├── toolkit.njk       # Support toolkit template
+│   ├── code-of-care.njk  # Community guidelines
+│   └── privacy.njk       # Privacy policy
+├── lang/                  # Translation files (en.json, pt.json)
+├── assets/                # Images and static files
+├── script.js              # Client-side JavaScript
+├── style.css              # Global styles
+└── _site/                 # Generated output (not tracked in git)
+```
 
 ### Key Features
 
@@ -42,6 +63,7 @@ Built as a lightweight static site with modern web standards:
 - 📱 **Responsive**: Optimized for all screen sizes
 - 🎨 **Themeable**: CSS custom properties for easy visual customization
 - 🎠 **Interactive Components**: Testimonial carousel, tabbed content, smooth scroll
+- 🧩 **Component-based**: Modular Nunjucks templates for maintainability
 
 ---
 
@@ -51,24 +73,55 @@ We welcome contributions that improve accessibility, add language support, or en
 
 **To contribute:**
 1. Fork the repository and create a feature branch
-2. Test your changes locally (see below)
-3. Submit a pull request with a clear description
+2. Make changes in the `src/` directory (edit `.njk` templates, not generated HTML)
+3. Test locally with `npm start` to ensure changes work correctly
+4. Build with `npm run build` to verify production output
+5. Submit a pull request with a clear description
+
+**Important:** Edit source files in `src/`, not the generated files in `_site/` or at the project root. The HTML files at root are generated from templates and will be overwritten on build.
 
 ---
 
-## Running Locally
+## Development
 
-Serve the site over HTTP (required for translation loading):
+### Prerequisites
 
-```bash
-python3 -m http.server 8000
-```
+- Node.js (v14 or higher)
+- npm
 
-Open [http://localhost:8000](http://localhost:8000) in your browser.
+### Getting Started
 
-**Test languages:**
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start development server:**
+   ```bash
+   npm start
+   ```
+
+   This runs Eleventy with live reload at [http://localhost:8080](http://localhost:8080)
+
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+   Outputs to the `_site/` directory
+
+### Testing Languages
+
+Add language parameter to any page:
 - English: `?lang=en`
 - Portuguese: `?lang=pt`
+
+### Clean Build
+
+To remove generated files:
+```bash
+npm run clean
+```
 
 ---
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{ lang or 'en' }}" data-theme="{{ theme or 'blue' }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mama Circle helps combat maternal isolation through gentle peer support. Find postpartum support, connect with mothers worldwide, and discover a judgment-free community. No sign-ups, no apps, only connection." />
+  <meta name="keywords" content="maternal isolation, postpartum support, new mother help, maternal mental health, motherhood community, postpartum depression support, expat mothers, overseas mom support, Portuguese mothers, mama circle, peer support, new mom anxiety, maternal loneliness" />
+  <meta name="author" content="Mama Circle" />
+  <meta property="og:title" content="Mama Circle 💞" />
+  <meta property="og:description" lang="en" content="A soft place to land in motherhood. Mamas supporting mamas, no sign-ups, no judgment." />
+  <meta property="og:description" lang="pt" content="Um lugar gentil para pousar na maternidade. Mães apoiando mães, sem julgamentos." />
+  <meta property="og:url" content="https://mamacircle.me" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://mamacircle.me/assets/images/logo/mandala-circle.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mama Circle 💞" />
+  <meta name="twitter:description" lang="en" content="A soft place to land in motherhood." />
+  <meta name="twitter:description" lang="pt" content="Um lugar gentil para pousar na maternidade." />
+  <meta name="twitter:image" content="https://mamacircle.me/assets/images/logo/mandala-circle.png" />
+  <link rel="canonical" href="https://mamacircle.me/" />
+  <link rel="alternate" href="https://mamacircle.me/?lang=en" hreflang="en" />
+  <link rel="alternate" href="https://mamacircle.me/?lang=pt" hreflang="pt" />
+  <link rel="alternate" href="https://mamacircle.me/" hreflang="x-default" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <title>Mama Circle - Support for Maternal Isolation & Postpartum Community</title>
+
+  <!-- Preconnect to external resources for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <link rel="stylesheet" href="/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital@1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  {{ structuredData | safe }}
+</head>
+
+<body>
+  {% include "components/header.njk" %}
+
+  {{ content | safe }}
+
+  {% include "components/footer.njk" %}
+
+  <script src="/script.js"></script>
+</body>
+</html>

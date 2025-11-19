@@ -277,6 +277,51 @@ main section:last-of-type {
   }
 }
 
+/* Toolkit navigation */
+.toolkit-nav {
+  background: var(--surface-muted);
+  border-left: 5px solid var(--accent);
+}
+
+.toolkit-nav h2 {
+  font-size: var(--font-lg);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.toolkit-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.toolkit-nav li {
+  margin: 0;
+  padding: 0;
+}
+
+.toolkit-nav li::before {
+  content: none;
+}
+
+.toolkit-nav a {
+  display: inline;
+  font-size: var(--font-md);
+  font-weight: normal;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+
+.toolkit-nav a:hover,
+.toolkit-nav a:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 
 /* === Header & Nav === */
 .site-header {
@@ -716,10 +761,11 @@ main section:last-of-type {
 .footer-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(1rem, 4vw, 2rem);
+  gap: clamp(3rem, 8vw, 6rem);
   justify-content: space-between;
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 1rem;
   text-align: left;
 }
 .footer-left, .footer-right {
@@ -831,7 +877,7 @@ main section:last-of-type {
   }
   .footer-grid {
     max-width: 1200px;
-    gap: clamp(2rem, 3vw, 3rem);
+    gap: clamp(4rem, 8vw, 8rem);
   }
 
   /* Carousel on larger screens */

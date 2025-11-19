@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{ lang or 'en' }}" data-theme="{{ theme or 'blue' }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  {# Page-specific meta tags #}
+  {% if description %}
+  <meta name="description" content="{{ description }}" />
+  {% endif %}
+  {% if keywords %}
+  <meta name="keywords" content="{{ keywords }}" />
+  {% endif %}
+  <meta name="author" content="Mama Circle" />
+
+  {# Open Graph #}
+  <meta property="og:title" content="{{ ogTitle or title or 'Mama Circle 💞' }}" />
+  <meta property="og:description" content="{{ ogDescription or description or 'A soft place to land in motherhood. Mamas supporting mamas, no sign-ups, no judgment.' }}" />
+  <meta property="og:url" content="https://mamacircle.me{{ page.url }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://mamacircle.me/assets/images/logo/mandala-circle.png" />
+
+  {# Twitter Card #}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ ogTitle or title or 'Mama Circle 💞' }}" />
+  <meta name="twitter:description" content="{{ ogDescription or description or 'A soft place to land in motherhood.' }}" />
+  <meta name="twitter:image" content="https://mamacircle.me/assets/images/logo/mandala-circle.png" />
+
+  {# Canonical and language alternates #}
+  <link rel="canonical" href="https://mamacircle.me{{ page.url }}" />
+  {% if i18n %}
+  <link rel="alternate" href="https://mamacircle.me{{ page.url }}?lang=en" hreflang="en" />
+  <link rel="alternate" href="https://mamacircle.me{{ page.url }}?lang=pt" hreflang="pt" />
+  <link rel="alternate" href="https://mamacircle.me{{ page.url }}" hreflang="x-default" />
+  {% endif %}
+
+  {# Favicons #}
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <title>{{ title or 'Mama Circle - Support for Maternal Isolation & Postpartum Community' }}</title>
+
+  <!-- Preconnect to external resources for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <link rel="stylesheet" href="/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital@1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  {# Page-specific structured data #}
+  {% if structuredData %}
+  <script type="application/ld+json">
+  {{ structuredData | safe }}
+  </script>
+  {% endif %}
+</head>
+
+<body>
+  {% include "components/header.njk" %}
+
+  <main id="main" role="main" {% if not isHomepage %}class="wrapper"{% endif %} tabindex="-1">
+    {{ content | safe }}
+  </main>
+
+  {% include "components/footer.njk" %}
+
+  <script src="/script.js"></script>
+</body>
+</html>

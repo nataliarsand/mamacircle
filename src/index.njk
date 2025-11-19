@@ -1,0 +1,291 @@
+---
+layout: layouts/home.njk
+i18n: true
+isHomepage: true
+structuredData: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mama Circle",
+    "alternateName": "mamacircle",
+    "url": "https://mamacircle.me",
+    "logo": "https://mamacircle.me/assets/images/logo/mandala-circle.png",
+    "description": "A grassroots initiative combating maternal isolation through peer support. Connecting mothers worldwide with gentle, judgment-free community.",
+    "foundingDate": "2024",
+    "sameAs": [
+      "https://mamacircle.me"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hello@mamacircle.me",
+      "contactType": "Customer Support"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Worldwide"
+    },
+    "knowsAbout": [
+      "maternal mental health",
+      "postpartum support",
+      "maternal isolation",
+      "new mother support",
+      "peer support networks"
+    ],
+    "inLanguage": ["en", "pt"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Mama Circle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mama Circle is a grassroots initiative to combat maternal isolation. Mothers use the hashtag #mamacircle to signal they're available for support. There's no app, no sign-up. We are here for gentle connection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find support as a new mother?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Search for #mamacircle on social media. When you find someone who feels safe, reach out. Send a message, ask a question, or simply say hello. There are no expectations or obligations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I offer support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add #mamacircle to your bio. When you meet another mother, you can say: 'I'm part of #mamacircle, you can always reach out to me if it feels safe for you.' Visit the Toolkit for ready-to-share messages and social post ideas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this only for certain locations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We're worldwide. Mothers connect from Scotland, Portugal, the Netherlands, Brazil, and beyond. The circle is especially welcoming to expat mothers and Portuguese speakers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it cost anything?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Completely free. No memberships, fees, or products. This is community-led peer support, nothing more."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes this different from other groups?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "First off, this is not a group. There's no app, no moderators, no approval process. It's self-organized and trust-based. Simply add the hashtag, reach out, embed our manifesto into your heart and be there for one another and you're part of the circle. If you want to create or join a #mamacircle group, either face to face, WhatsApp or Telegram, feel free to do so, but keep in mind that all groups are independent and not directly affiliated with this initiative."
+        }
+      }
+    ]
+  }
+  </script>
+---
+  <section class="header">
+    <img class="logo" src="/assets/images/logo/mandala-circle.png" alt="Mama Circle logo - grassroots maternal support community helping mothers combat isolation" />
+    <h1>Mama Circle</h1>
+    <h2 class="strapline" data-i18n="strapline"></h2>
+
+    <div class="intro">
+      <p data-i18n="intro_p1"></p>
+      <p data-i18n="intro_p2"></p>
+    </div>
+    <a class="button" href="/#how-it-works" data-i18n="learn_more_btn"></a>
+  </section>
+
+  <main id="main" role="main" class="wrapper" tabindex="-1">
+    <section id="how-it-works">
+      <h2 data-i18n="how_heading"></h2>
+
+      <div class="tabs" role="tablist" aria-label="Mama Circle content">
+        <button class="tab active" data-tab="manifesto" role="tab" aria-selected="true" aria-controls="manifesto" id="tab-manifesto">
+          <i class="fa-solid fa-scroll" aria-hidden="true"></i> <span data-i18n="tab_manifesto"></span>
+        </button>
+        <button class="tab" data-tab="new-mamas" role="tab" aria-selected="false" aria-controls="new-mamas" id="tab-new">
+          <i class="fa-solid fa-baby" aria-hidden="true"></i> <span data-i18n="tab_new"></span>
+        </button>
+        <button class="tab" data-tab="supporters" role="tab" aria-selected="false" aria-controls="supporters" id="tab-supporters">
+          <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> <span data-i18n="tab_supporters"></span>
+        </button>
+      </div>
+
+      <div class="tab-content left-accent section-box active" id="manifesto" role="tabpanel" aria-labelledby="tab-manifesto">
+        <h3 data-i18n="manifesto_heading"></h3>
+        <ul class="blockquote">
+          <li data-i18n="manifesto_li1"></li>
+          <li data-i18n="manifesto_li2"></li>
+          <li data-i18n="manifesto_li3"></li>
+          <li data-i18n="manifesto_li4"></li>
+          <li data-i18n="manifesto_li5"></li>
+          <li data-i18n="manifesto_li6"></li>
+        </ul>
+
+        <hr class="divider" />
+
+        <ul class="values-list">
+          <li data-i18n="values_li1"></li>
+          <li data-i18n="values_li2"></li>
+          <li data-i18n="values_li3"></li>
+          <li data-i18n="values_li4"></li>
+          <li data-i18n="values_li5"></li>
+        </ul>
+
+        <p class="note" data-i18n="values_note"></p>
+      </div>
+
+      <div class="tab-content section-box highlighted" id="new-mamas" role="tabpanel" aria-labelledby="tab-new" hidden>
+        <h3 data-i18n="new_mamas_heading"></h3>
+        <p data-i18n="new_mamas_p1"></p>
+        <p data-i18n="new_mamas_quote"></p>
+        <p data-i18n="new_mamas_p2"></p>
+        <ul>
+          <li data-i18n="new_mamas_li1"></li>
+          <li data-i18n="new_mamas_li2"></li>
+          <li data-i18n="new_mamas_li3"></li>
+          <li data-i18n="new_mamas_li4"></li>
+        </ul>
+      </div>
+
+      <div class="tab-content section-box highlighted" id="supporters" role="tabpanel" aria-labelledby="tab-supporters" hidden>
+        <h3 data-i18n="supporters_heading"></h3>
+        <p data-i18n="supporters_intro"></p>
+        <ul>
+          <li data-i18n="supporters_li1"></li>
+          <li data-i18n="supporters_li2"></li>
+          <li data-i18n="supporters_li3"></li>
+          <li data-i18n="supporters_li4"></li>
+        </ul>
+      </div>
+
+      <p class="note" data-i18n="how_note"></p>
+    </section>
+
+
+    <section id="circle" class="wall">
+      <h2 data-i18n="circle_heading"></h2>
+      <p data-i18n="circle_intro"></p>
+
+      <div class="circle-carousel" role="region" aria-label="Testimonials carousel" aria-roledescription="carousel">
+        <!-- Carousel wrapper -->
+        <div class="carousel-wrapper">
+          <div class="carousel-track">
+            <article class="mama-card active" data-carousel-item="0" role="group" aria-roledescription="slide" aria-label="1 of 3">
+              <h3>Nati<span>, Perth, Scotland</span></h3>
+              <div class="quote-wrapper" id="quote-nati">
+                <p class="quote" data-i18n="card1_quote"></p>
+              </div>
+              <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-nati" data-i18n="show_more"></button>
+            </article>
+
+            <article class="mama-card" data-carousel-item="1" role="group" aria-roledescription="slide" aria-label="2 of 3">
+              <h3>Natalia<span>, Amsterdam, Netherlands</span></h3>
+              <div class="quote-wrapper" id="quote-natalia">
+                <p class="quote" data-i18n="card2_quote"></p>
+              </div>
+              <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-natalia" data-i18n="show_more"></button>
+            </article>
+
+            <article class="mama-card" data-carousel-item="2" role="group" aria-roledescription="slide" aria-label="3 of 3">
+              <h3>Ana<span>, Lisbon, Portugal</span></h3>
+              <div class="quote-wrapper" id="quote-ana">
+                <p class="quote" data-i18n="card3_quote"></p>
+              </div>
+              <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-ana" data-i18n="show_more"></button>
+            </article>
+          </div>
+
+          <!-- Controls -->
+          <button class="carousel-control prev" type="button" aria-label="Previous testimonial">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button class="carousel-control next" type="button" aria-label="Next testimonial">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+          <button type="button" class="indicator active" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+          <button type="button" class="indicator" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+          <button type="button" class="indicator" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        </div>
+      </div>
+
+      <div class="join-banner left-accent section-muted section-box" role="complementary">
+        <h3 data-i18n="join_banner_heading"></h3>
+        <p data-i18n="join_banner_p"></p>
+        <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSdBmw7GZ8UI61lRiiASpiIHP8Niuyj2b332ZbgEePJ4PiJiZg/viewform" target="_blank" rel="noopener noreferrer" aria-label="Share your Circle message (opens in new tab)" data-i18n="join_banner_button"></a>
+      </div>
+
+    </section>
+
+    <section id="faq" class="faq-section">
+      <h2 data-i18n="faq_heading"></h2>
+
+      <details class="faq-item section-box">
+        <summary>
+          <h3 data-i18n="faq_q1"></h3>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </summary>
+        <p data-i18n="faq_a1"></p>
+      </details>
+
+      <details class="faq-item section-box">
+        <summary>
+          <h3 data-i18n="faq_q2"></h3>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </summary>
+        <p data-i18n="faq_a2"></p>
+      </details>
+
+      <details class="faq-item section-box">
+        <summary>
+          <h3 data-i18n="faq_q3"></h3>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </summary>
+        <p data-i18n="faq_a3"></p>
+      </details>
+
+      <details class="faq-item section-box">
+        <summary>
+          <h3 data-i18n="faq_q4"></h3>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </summary>
+        <p data-i18n="faq_a4"></p>
+      </details>
+
+      <details class="faq-item section-box">
+        <summary>
+          <h3 data-i18n="faq_q5"></h3>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </summary>
+        <p data-i18n="faq_a5"></p>
+      </details>
+
+      <details class="faq-item section-box">
+        <summary>
+          <h3 data-i18n="faq_q6"></h3>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </summary>
+        <p data-i18n="faq_a6"></p>
+      </details>
+    </section>
+
+  </main>

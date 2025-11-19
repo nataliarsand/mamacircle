@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+title: Page Not Found - Mama Circle
+i18n: false
+permalink: /404.html
+---
+
+<style>
+  .error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    text-align: center;
+    padding: 2rem;
+  }
+  .error-code {
+    font-size: 6rem;
+    font-weight: 300;
+    color: var(--accent);
+    margin: 0;
+    line-height: 1;
+  }
+  .error-message {
+    font-size: var(--font-xl);
+    margin: 1rem 0;
+    color: var(--headline);
+  }
+  .error-description {
+    font-size: var(--font-md);
+    color: var(--text);
+    margin-bottom: 2rem;
+    max-width: 500px;
+  }
+  .error-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  @media (max-width: 480px) {
+    .error-code {
+      font-size: 4rem;
+    }
+  }
+</style>
+
+<div class="error-page">
+  <h1 class="error-code">404</h1>
+  <p class="error-message">Page Not Found</p>
+  <p class="error-description">
+    We couldn't find the page you're looking for. It might have been moved or doesn't exist.
+  </p>
+  <div class="error-actions">
+    <a href="/" class="button">Go to Homepage</a>
+    <a href="/toolkit" class="button" style="background: var(--surface); color: var(--text); border: 1px solid var(--border);">View Toolkit</a>
+  </div>
+</div>

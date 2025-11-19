@@ -449,6 +449,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initial check
     updateActiveNav();
   }
+
+  // Initialize shared footer for pages without i18n
+  const footerPlaceholder = document.getElementById('site-footer-placeholder');
+  if (footerPlaceholder) {
+    footerPlaceholder.innerHTML = `
+      <footer class="site-footer" aria-label="Site footer">
+        <div class="footer-grid">
+          <div class="footer-left">
+            <p><strong>Join the Circle</strong><br />
+            Add #mamacircle to your bio. Share it gently. Let it grow.
+            </p>
+          </div>
+          <div class="footer-right">
+            <p class="disclaimer-line">This is a grassroots initiative — not professional advice.</p>
+            <p class="policy-line">
+              <a href="privacy.html" target="_blank" rel="noopener noreferrer" aria-label="Privacy & Safety (opens in new tab)">Privacy & Safety</a> ·
+              <a href="code-of-care.html" target="_blank" rel="noopener noreferrer" aria-label="Code of Care (opens in new tab)">Code of Care</a>
+            </p>
+          </div>
+        </div>
+        <p class="signature">Made with care by mamas, for mamas.</p>
+      </footer>
+    `;
+  }
 });
 
 // Lightbox functionality for image gallery

@@ -1,0 +1,20 @@
+{
+  "name": "mamacircle",
+  "version": "1.0.0",
+  "description": "A grassroots initiative to combat maternal isolation through peer support",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "maternal-support",
+    "postpartum",
+    "community"
+  ],
+  "author": "Mama Circle",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

@@ -1,19 +1,49 @@
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # IDE
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
 
 # Environment variables
 .env
 .env.local
+.env.*.local
 
 # Temporary files
 *.tmp
 *.swp
 *~
 
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
 # Marketing materials (private)
 MARKETING_BRIEF.md
 SEO_GUIDE.md
+
+# Eleventy
+_site/
+.cache/
+
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Optional npm cache
+.npm
+
+# Build files (if using any bundlers)
+dist/
+build/
