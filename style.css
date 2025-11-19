@@ -218,6 +218,15 @@ section {
 
   h1, h2, h3 { margin-top: 0; }
 }
+
+/* Add more spacing between main sections */
+main section {
+  margin-bottom: 6rem;
+}
+
+main section:last-of-type {
+  margin-bottom: 4rem;
+}
 .section-muted {
   background: var(--surface-muted);
 }
@@ -896,7 +905,7 @@ section {
 
 /* FAQ Section Styles */
 .faq-section {
-  margin: 4rem auto;
+  margin: 6rem auto;
   max-width: 800px;
 }
 
@@ -909,6 +918,7 @@ section {
   margin-bottom: 1rem;
   border-radius: 8px;
   overflow: hidden;
+  padding: 0;
 }
 
 .faq-item summary {
