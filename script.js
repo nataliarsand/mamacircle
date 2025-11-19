@@ -1,7 +1,16 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
   const theme = params.get('theme');
-  const lang = params.get('lang') || 'en';
+
+  // Get language from URL, localStorage, or default to 'en'
+  let lang = params.get('lang');
+  if (!lang) {
+    // Check localStorage for saved preference
+    lang = localStorage.getItem('preferredLanguage') || 'en';
+  } else {
+    // Save language preference to localStorage when set via URL
+    localStorage.setItem('preferredLanguage', lang);
+  }
 
   if (theme) {
     document.documentElement.setAttribute('data-theme', theme);
@@ -165,6 +174,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       link.classList.remove('current');
       link.removeAttribute('aria-current');
     }
+
+    // Save language preference when link is clicked
+    link.addEventListener('click', () => {
+      localStorage.setItem('preferredLanguage', linkLang);
+    });
   });
 
   document.querySelectorAll('a[href*=".html"]:not(.lang-link)').forEach((link) => {
