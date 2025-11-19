@@ -1,0 +1,30 @@
+<h1>Mama Circle</h1>
+<p>Mama Circle is a static website that creates a grassroots space where mothers can gently connect and support one another.</p>
+<h2>Project Structure</h2>
+<ul>
+<li><code>index.html</code> – Main landing page introducing the project and its manifesto.</li>
+<li><code>toolkit.html</code> – Resource toolkit for participants.</li>
+<li><code>code-of-care.html</code> – Guidelines and community principles.</li>
+<li><code>style.css</code> – Global styles, including color themes and layout.</li>
+<li><code>script.js</code> – Client-side logic for internationalization, tabs, carousel, and navigation.</li>
+<li><code>lang/</code> – JSON files with English (<code>en.json</code>) and Portuguese (<code>pt.json</code>) translations.</li>
+<li><code>assets/</code> – Images and icons used across the site.</li>
+<li>Other assets such as <code>sitemap.xml</code>, <code>robots.txt</code>, and favicon files support deployment.</li>
+</ul>
+<h2>Running Locally</h2>
+<p>The site uses fetch requests to load translation files, so it needs to be served over HTTP.</p>
+<pre><code class="language-bash"># Clone and enter the repository
+ git clone &lt;repository-url&gt;
+ cd mamacircle
+
+# Start a local web server (Python 3)
+ python3 -m http.server 8000
+</code></pre>
+<p>Open your browser to <a href="http://localhost:8000/index.html">http://localhost:8000/index.html</a> to view the site.</p>
+<h3>Language and Theme</h3>
+<p>The interface language defaults to English but can be switched using the <code>lang</code> query parameter:</p>
+<pre><code>http://localhost:8000/index.html?lang=pt
+</code></pre>
+<p>A <code>theme</code> parameter can also be provided to change the color theme, e.g. <code>?theme=blue</code>.</p>
+<h2>Contributing</h2>
+<p>Feel free to open issues or pull requests for improvements to the content, translations, or styling. All pages are plain HTML/CSS/JS and can be edited directly.</p>

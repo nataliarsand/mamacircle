@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   let translations = {};
   try {
-    const res = await fetch(`lang/${lang}.json`);
+    const res = await fetch(`/lang/${lang}.json`);
     if (res.ok) {
       translations = await res.json();
     }
@@ -165,130 +165,160 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
+  // Carousel functionality
   const carousel = document.querySelector('.circle-carousel');
   if (carousel) {
     const track = carousel.querySelector('.carousel-track');
     const cards = Array.from(track.querySelectorAll('.mama-card'));
     const prevBtn = carousel.querySelector('.carousel-control.prev');
     const nextBtn = carousel.querySelector('.carousel-control.next');
-    const viewport = carousel.querySelector('.carousel-viewport');
-    const pagination = carousel.querySelector('.carousel-pagination');
-    let index = 0;
-    const intervalTime = 6000;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let autoPlay = !prefersReducedMotion && cards.length > 1 ? setInterval(() => next(false), intervalTime) : null;
+    const indicators = Array.from(carousel.querySelectorAll('.indicator'));
 
-    if (cards.length <= 1) {
-      prevBtn?.setAttribute('disabled', 'true');
-      nextBtn?.setAttribute('disabled', 'true');
+    let currentIndex = 0;
+    const intervalTime = 7000; // 7 seconds for better UX
+    let autoPlayInterval = null;
+
+    // Initialize
+    function init() {
+      updateCarousel();
+      startAutoPlay();
     }
 
-    if (pagination && cards.length > 1) {
-      cards.forEach((card, cardIndex) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.setAttribute('role', 'tab');
-        const title = card.querySelector('h3')?.textContent?.trim() || String(cardIndex + 1);
-        dot.setAttribute('aria-label', `Show testimonial ${title}`);
-        dot.setAttribute('aria-pressed', cardIndex === index ? 'true' : 'false');
-        dot.addEventListener('click', () => {
-          goTo(cardIndex);
-          reset();
-        });
-        pagination.appendChild(dot);
+    // Update carousel position and active states
+    function updateCarousel() {
+      // Update card active states
+      cards.forEach((card, index) => {
+        const isActive = index === currentIndex;
+        card.classList.toggle('active', isActive);
+        card.setAttribute('aria-hidden', !isActive);
       });
-    }
 
-    function getStep() {
-      if (!cards.length) return 0;
-      const cardRect = cards[0].getBoundingClientRect();
-      const styles = window.getComputedStyle(track);
-      const gap = parseFloat(styles.columnGap || styles.gap || '0');
-      return cardRect.width + gap;
-    }
-
-    function updatePagination() {
-      if (!pagination) return;
-      pagination.querySelectorAll('button').forEach((btn, btnIndex) => {
-        btn.setAttribute('aria-pressed', btnIndex === index ? 'true' : 'false');
+      // Update indicators
+      indicators.forEach((indicator, index) => {
+        const isActive = index === currentIndex;
+        indicator.classList.toggle('active', isActive);
+        indicator.setAttribute('aria-current', isActive);
       });
+
+      // Update button states
+      updateButtonStates();
     }
 
-    function update() {
-      if (!cards.length) return;
-      if (index >= cards.length) {
-        index = 0;
-      } else if (index < 0) {
-        index = cards.length - 1;
+    // Update button aria labels
+    function updateButtonStates() {
+      const currentSlide = currentIndex + 1;
+      const totalSlides = cards.length;
+      prevBtn.setAttribute('aria-label', `Previous testimonial (${currentSlide} of ${totalSlides})`);
+      nextBtn.setAttribute('aria-label', `Next testimonial (${currentSlide} of ${totalSlides})`);
+    }
+
+    // Navigate to specific slide
+    function goToSlide(index) {
+      currentIndex = (index + cards.length) % cards.length;
+      updateCarousel();
+      resetAutoPlay();
+    }
+
+    // Next slide
+    function nextSlide() {
+      goToSlide(currentIndex + 1);
+    }
+
+    // Previous slide
+    function prevSlide() {
+      goToSlide(currentIndex - 1);
+    }
+
+    // Auto-play functions
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayInterval = setInterval(nextSlide, intervalTime);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
       }
-      const step = getStep();
-      track.style.transform = `translateX(${-step * index}px)`;
-      updatePagination();
     }
 
-    function goTo(newIndex) {
-      index = (newIndex + cards.length) % cards.length;
-      update();
+    function resetAutoPlay() {
+      stopAutoPlay();
+      startAutoPlay();
     }
 
-    function next(shouldReset = true) {
-      goTo(index + 1);
-      if (shouldReset) reset();
-    }
-
-    function prev() {
-      goTo(index - 1);
-      reset();
-    }
-
-    function pause() {
-      if (autoPlay) {
-        clearInterval(autoPlay);
-        autoPlay = null;
-      }
-    }
-
-    function resume() {
-      if (!autoPlay && !prefersReducedMotion && cards.length > 1) {
-        autoPlay = setInterval(() => next(false), intervalTime);
-      }
-    }
-
-    function reset() {
-      pause();
-      resume();
-    }
-
-    nextBtn?.addEventListener('click', () => next());
-    prevBtn?.addEventListener('click', () => prev());
-
-    const interactiveElements = [carousel, prevBtn, nextBtn];
-    if (pagination) {
-      interactiveElements.push(...pagination.querySelectorAll('button'));
-    }
-
-    interactiveElements.filter(Boolean).forEach((el) => {
-      el.addEventListener('mouseenter', pause);
-      el.addEventListener('mouseleave', resume);
-      el.addEventListener('focusin', pause);
-      el.addEventListener('focusout', resume);
+    // Event listeners for controls
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
     });
 
-    let resizeTimer;
-    const handleResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(update, 150);
-    };
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+    });
 
-    if ('ResizeObserver' in window && viewport) {
-      const observer = new ResizeObserver(() => update());
-      observer.observe(viewport);
-    } else {
-      window.addEventListener('resize', handleResize);
+    // Event listeners for indicators
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        goToSlide(index);
+      });
+    });
+
+    // Pause on hover/focus (accessibility best practice)
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+    carousel.addEventListener('focusin', stopAutoPlay);
+    carousel.addEventListener('focusout', startAutoPlay);
+
+    // Keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextSlide();
+      }
+    });
+
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoPlay();
+    });
+
+    carousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoPlay();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
     }
-    window.addEventListener('orientationchange', update);
 
-    update();
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateCarousel();
+      }, 150);
+    });
+
+    // Initialize carousel
+    init();
   }
 
   const translationTags = document.querySelectorAll('.translation-tag');
@@ -317,4 +347,62 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     fadeEls.forEach((el) => observer.observe(el));
   }
+
+  // Scroll spy for navigation
+  const scrollSpyLinks = document.querySelectorAll('.site-nav a[href^="#"], .site-nav a[href^="index.html#"]');
+  const scrollSpySections = [];
+
+  // Build sections array from nav links
+  scrollSpyLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    const hash = href.includes('#') ? href.split('#')[1] : null;
+    if (hash) {
+      const section = document.getElementById(hash);
+      if (section) {
+        scrollSpySections.push({ link, section, id: hash });
+      }
+    }
+  });
+
+  if (scrollSpySections.length > 0) {
+    function updateActiveNav() {
+      const scrollPos = window.scrollY + 100; // Offset for header
+
+      let currentSection = null;
+
+      // Find which section is currently in view
+      scrollSpySections.forEach(({ section, id }) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+          currentSection = id;
+        }
+      });
+
+      // Update active states
+      scrollSpySections.forEach(({ link, id }) => {
+        if (id === currentSection) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    // Throttle scroll events for performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+      }
+      scrollTimeout = window.requestAnimationFrame(() => {
+        updateActiveNav();
+      });
+    });
+
+    // Initial check
+    updateActiveNav();
+  }
 });
+

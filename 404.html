@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blue">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found - Mama Circle</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <style>
+    .error-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    .error-code {
+      font-size: 6rem;
+      font-weight: 300;
+      color: var(--accent);
+      margin: 0;
+      line-height: 1;
+    }
+    .error-message {
+      font-size: var(--font-xl);
+      margin: 1rem 0;
+      color: var(--headline);
+    }
+    .error-description {
+      font-size: var(--font-md);
+      color: var(--text);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @media (max-width: 480px) {
+      .error-code {
+        font-size: 4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="site-branding"><a href="index.html">Mama Circle</a></div>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html#manifesto">Manifesto</a></li>
+          <li><a href="index.html#how-it-works">How it works</a></li>
+          <li><a href="index.html#circle">Stories</a></li>
+          <li><a href="toolkit.html">Toolkit</a></li>
+          <li><a href="code-of-care.html">Code of Care</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper error-page" role="main">
+    <h1 class="error-code">404</h1>
+    <p class="error-message">Page Not Found</p>
+    <p class="error-description">
+      We couldn't find the page you're looking for. It might have been moved or doesn't exist.
+    </p>
+    <div class="error-actions">
+      <a href="index.html" class="button">Go to Homepage</a>
+      <a href="toolkit.html" class="button" style="background: var(--surface); color: var(--text); border: 1px solid var(--border);">View Toolkit</a>
+    </div>
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <p class="signature">Made with 💞 for mamas everywhere</p>
+  </footer>
+</body>
+</html>

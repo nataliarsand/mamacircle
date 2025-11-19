@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+# Block access to development and system files
+Disallow: /.git/
+Disallow: /.gitignore
+Disallow: /.eleventy.js
+Disallow: /.eleventyignore
+Disallow: /node_modules/
+Disallow: /package*.json
+Disallow: /README.md
+
 Sitemap: https://mamacircle.me/sitemap.xml

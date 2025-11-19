@@ -18,14 +18,14 @@
   <meta name="twitter:description" lang="en" content="A soft place to land in motherhood." />
   <meta name="twitter:description" lang="pt" content="Um lugar gentil para pousar na maternidade." />
   <meta name="twitter:image" content="https://mamacircle.me/assets/mandala-circle.png" />
-  <link rel="canonical" href="https://mamacircle.me" />
+  <link rel="canonical" href="index.html" />
   <link rel="alternate" href="https://mamacircle.me/?lang=en" hreflang="en" />
   <link rel="alternate" href="https://mamacircle.me/?lang=pt" hreflang="pt" />
-  <link rel="alternate" href="https://mamacircle.me" hreflang="x-default" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="alternate" href="index.html" hreflang="x-default" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <title>Mama Circle</title>
 
   <link rel="stylesheet" href="style.css" />
@@ -44,7 +44,7 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#main" data-i18n="skip_link"></a>
+  <a class="skip-link" href="index.html#main" data-i18n="skip_link"></a>
   <header class="site-header">
     <div class="nav-container">
       <div class="site-branding"><a href="index.html">Mama Circle</a></div>
@@ -53,14 +53,14 @@
       </button>
       <nav class="site-nav">
         <ul>
-          <li><a href="#manifesto" data-i18n="nav_manifesto"></a></li>
-          <li><a href="#how-it-works" data-i18n="nav_how_it_works"></a></li>
-          <li><a href="#circle" data-i18n="nav_stories"></a></li>
+          <li><a href="index.html#manifesto" data-i18n="nav_manifesto"></a></li>
+          <li><a href="index.html#how-it-works" data-i18n="nav_how_it_works"></a></li>
+          <li><a href="index.html#circle" data-i18n="nav_stories"></a></li>
           <li><a href="toolkit.html" data-i18n="nav_toolkit"></a></li>
           <li><a href="code-of-care.html" data-i18n="nav_code_of_care"></a></li>
           <li class="language-switcher">
-            <a href="?lang=pt" lang="pt" class="lang-link" data-lang="pt" aria-label="View site in Portuguese">PT</a>
-            <a href="?lang=en" lang="en" class="lang-link" data-lang="en" aria-label="View site in English">EN</a>
+            <a href="https://mamacircle.me/?lang=pt" lang="pt" class="lang-link" data-lang="pt" aria-label="View site in Portuguese">PT</a>
+            <a href="https://mamacircle.me/?lang=en" lang="en" class="lang-link" data-lang="en" aria-label="View site in English">EN</a>
           </li>
         </ul>
       </nav>
@@ -75,7 +75,7 @@
       <p data-i18n="intro_p1"></p>
       <p data-i18n="intro_p2"></p>
     </div>
-    <a class="button" href="#how-it-works" data-i18n="learn_more_btn"></a>
+    <a class="button" href="index.html#how-it-works" data-i18n="learn_more_btn"></a>
   </section>
 
   <main id="main" role="main" class="wrapper" tabindex="-1">
@@ -150,39 +150,56 @@
       <h2 data-i18n="circle_heading"></h2>
       <p data-i18n="circle_intro"></p>
 
-      <div class="circle-carousel" role="region" aria-label="Circle stories carousel">
-        <div class="carousel-inner">
-          <button class="carousel-control prev" type="button" aria-label="Previous testimonial">&#10094;</button>
-          <div class="carousel-viewport">
-            <div class="carousel-track">
-          <article class="mama-card">
-            <h3>Nati<span>, Perth, Scotland</span></h3>
-            <div class="quote-wrapper" id="quote-nati">
-              <p class="quote" data-i18n="card1_quote"></p>
-            </div>
-            <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-nati" data-i18n="show_more"></button>
-          </article>
+      <div class="circle-carousel" role="region" aria-label="Testimonials carousel" aria-roledescription="carousel">
+        <!-- Carousel wrapper -->
+        <div class="carousel-wrapper">
+          <div class="carousel-track">
+            <article class="mama-card active" data-carousel-item="0" role="group" aria-roledescription="slide" aria-label="1 of 3">
+              <h3>Nati<span>, Perth, Scotland</span></h3>
+              <div class="quote-wrapper" id="quote-nati">
+                <p class="quote" data-i18n="card1_quote"></p>
+              </div>
+              <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-nati" data-i18n="show_more"></button>
+            </article>
 
-          <article class="mama-card">
-            <h3>Natalia<span>, Amsterdam, Netherlands</span></h3>
-            <div class="quote-wrapper" id="quote-natalia">
-              <p class="quote" data-i18n="card2_quote"></p>
-            </div>
-            <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-natalia" data-i18n="show_more"></button>
-          </article>
+            <article class="mama-card" data-carousel-item="1" role="group" aria-roledescription="slide" aria-label="2 of 3">
+              <h3>Natalia<span>, Amsterdam, Netherlands</span></h3>
+              <div class="quote-wrapper" id="quote-natalia">
+                <p class="quote" data-i18n="card2_quote"></p>
+              </div>
+              <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-natalia" data-i18n="show_more"></button>
+            </article>
 
-          <article class="mama-card">
-            <h3>Ana<span>, Lisbon, Portugal</span></h3>
-            <div class="quote-wrapper" id="quote-ana">
-              <p class="quote" data-i18n="card3_quote"></p>
-            </div>
-            <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-ana" data-i18n="show_more"></button>
-          </article>
-            </div>
+            <article class="mama-card" data-carousel-item="2" role="group" aria-roledescription="slide" aria-label="3 of 3">
+              <h3>Ana<span>, Lisbon, Portugal</span></h3>
+              <div class="quote-wrapper" id="quote-ana">
+                <p class="quote" data-i18n="card3_quote"></p>
+              </div>
+              <button class="show-more" type="button" aria-expanded="false" aria-controls="quote-ana" data-i18n="show_more"></button>
+            </article>
           </div>
-          <button class="carousel-control next" type="button" aria-label="Next testimonial">&#10095;</button>
+
+          <!-- Controls -->
+          <button class="carousel-control prev" type="button" aria-label="Previous testimonial">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button class="carousel-control next" type="button" aria-label="Next testimonial">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+          </button>
         </div>
-        <div class="carousel-pagination" role="tablist" aria-label="Jump to testimonial"></div>
+
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+          <button type="button" class="indicator active" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+          <button type="button" class="indicator" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+          <button type="button" class="indicator" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        </div>
       </div>
 
       <div class="join-banner left-accent section-muted section-box" role="complementary">
