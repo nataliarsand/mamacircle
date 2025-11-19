@@ -437,3 +437,43 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+// Lightbox functionality for image gallery
+function openLightbox(imgElement) {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxDownload = document.getElementById('lightbox-download');
+
+  if (lightbox && lightboxImg && lightboxDownload) {
+    lightboxImg.src = imgElement.src;
+    lightboxImg.alt = imgElement.alt;
+    lightboxDownload.href = imgElement.src;
+
+    // Set download filename from the image filename
+    const filename = imgElement.src.split('/').pop();
+    lightboxDownload.download = 'mamacircle-' + filename;
+
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+}
+
+function closeLightbox(event) {
+  const lightbox = document.getElementById('lightbox');
+
+  // Only close if clicking the background or the close button
+  // Don't close if clicking the image or download button
+  if (!event || event.target === lightbox || event.target.classList.contains('lightbox-close')) {
+    if (lightbox) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+  }
+}
+
+// Close lightbox on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
+});
+
