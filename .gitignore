@@ -1,6 +1,3 @@
-# Node modules
-node_modules/
-
 # macOS
 .DS_Store
 
@@ -8,17 +5,11 @@ node_modules/
 .vscode/
 .idea/
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 # Environment variables
 .env
 .env.local
 
-# Downloaded files (from wget)
-index.html?lang=*
-
-# Build artifacts (if using Eleventy in future)
-# _site/
+# Temporary files
+*.tmp
+*.swp
+*~

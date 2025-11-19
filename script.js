@@ -20,11 +20,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const t = (key) => translations[key] || '';
 
+  // Safely set translated content with HTML support
+  // Uses DOMParser to prevent XSS while allowing safe HTML tags
+  function setTranslatedContent(element, htmlString) {
+    // Parse the HTML string safely
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlString, 'text/html');
+
+    // Clear existing content
+    element.textContent = '';
+
+    // Append parsed nodes to the element
+    while (doc.body.firstChild) {
+      element.appendChild(doc.body.firstChild);
+    }
+  }
+
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
     const value = t(key);
     if (value) {
-      el.innerHTML = value;
+      setTranslatedContent(el, value);
     }
   });
 
@@ -125,8 +141,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     less: t('show_less') || 'Show less',
   };
 
+  // Update language switcher links to preserve current page and theme
   langLinks.forEach((link) => {
     const linkLang = link.getAttribute('lang');
+    const url = new URL(link.href, window.location.origin);
+
+    // Set the language parameter
+    url.searchParams.set('lang', linkLang);
+
+    // Preserve theme if present
+    if (theme) {
+      url.searchParams.set('theme', theme);
+    }
+
+    // Update the href
+    link.href = url.toString();
+
+    // Mark current language
     if (linkLang === currentLang) {
       link.classList.add('current');
       link.setAttribute('aria-current', 'page');

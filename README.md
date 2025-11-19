@@ -1,138 +1,75 @@
-# Mama Circle 💞
+# Mama Circle
 
-Mama Circle is a grassroots space where mothers can gently connect and support one another. No sign-ups, no pressure — just a quiet signal that says "I'm here if you need someone."
+A grassroots digital space where mothers can gently connect and support one another. No sign-ups, no pressure — just a quiet signal that says "I'm here if you need someone."
 
-## 🚀 Quick Start
-
-### Running Locally
-
-The site uses JavaScript to load translation files dynamically, so it **must be served over HTTP** (not opened as a file).
-
-```bash
-# Navigate to project directory
-cd /Users/nataliaarsand/Dev/mamacircle
-
-# Start a local web server (Python 3)
-python3 -m http.server 8000
-```
-
-Open your browser to **[http://localhost:8000](http://localhost:8000)**
-
-### Testing Different Languages
-
-The interface defaults to English but supports Portuguese:
-
-- English: `http://localhost:8000/?lang=en`
-- Portuguese: `http://localhost:8000/?lang=pt`
-
-You can also change themes with the `theme` parameter:
-```
-http://localhost:8000/?theme=blue
-```
-
-## 📁 Project Structure
-
-```
-mamacircle/
-├── index.html              # Main landing page
-├── toolkit.html            # Resource toolkit for mamas
-├── code-of-care.html       # Community guidelines
-├── privacy.html            # Privacy & safety policy
-├── style.css               # Global styles and theme variables
-├── script.js               # Internationalization, carousel, navigation
-├── lang/
-│   ├── en.json            # English translations
-│   └── pt.json            # Portuguese translations
-├── assets/
-│   ├── mandala-circle.png # Logo and branding
-│   └── css/               # Additional stylesheets
-└── README.md              # This file
-```
-
-## 🎨 Key Features
-
-- **Bilingual Support**: English and Portuguese with dynamic i18n
-- **Testimonial Carousel**: Accessible, keyboard-navigable carousel with auto-play
-- **Responsive Design**: Mobile-first, works on all devices
-- **Accessibility**: ARIA labels, keyboard navigation, screen reader support
-- **Theme Support**: CSS custom properties for easy theming
-
-## 🌐 Deployment
-
-The site is deployed via **GitHub Pages** from the **root directory** of the `main` branch to [https://mamacircle.me](https://mamacircle.me)
-
-**Deployment is automatic** - any changes pushed to `main` will update the live site within a few minutes.
-
-## 🛠️ Development Workflow
-
-### 1. Make Changes
-Edit files in the root directory:
-- **Content**: Update HTML files or translation JSON files in `lang/`
-- **Styling**: Edit `style.css`
-- **Functionality**: Modify `script.js`
-
-### 2. Test Locally
-```bash
-python3 -m http.server 8000
-```
-View at http://localhost:8000 and test both languages
-
-### 3. Commit & Push
-```bash
-git add .
-git commit -m "Brief description of changes"
-git push origin main
-```
-
-### 4. Verify Deployment
-Wait 1-2 minutes, then check https://mamacircle.me
-
-## 🧪 Testing Checklist
-
-Before pushing changes, test:
-- [ ] Both English (`?lang=en`) and Portuguese (`?lang=pt`) versions
-- [ ] Mobile responsiveness (resize browser or use DevTools)
-- [ ] Carousel navigation (arrows, dots, keyboard, swipe on mobile)
-- [ ] All links work correctly
-- [ ] No console errors (check browser DevTools)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Make your changes and test thoroughly
-4. Submit a pull request with a clear description
-
-## 📝 Notes
-
-- **No Build Process**: This is a static site with no build step. Files are deployed as-is.
-- **Translation Files**: All text content is in `lang/en.json` and `lang/pt.json`
-- **CSS Variables**: Theme colors are defined at the top of `style.css` using CSS custom properties
-- **Carousel**: Built with vanilla JavaScript, no dependencies
-- **404 Page**: Custom error page at `404.html` for handling missing pages
-- **Security**: `robots.txt` blocks crawlers from accessing development files
-- **.nojekyll**: Tells GitHub Pages not to process files with Jekyll
-
-## 🔧 Troubleshooting
-
-**Site not loading?**
-- Make sure you're accessing via HTTP (http://localhost:8000), not opening the HTML file directly
-- Check that port 8000 isn't already in use: `lsof -ti:8000`
-
-**Translations not showing?**
-- Verify `lang/en.json` and `lang/pt.json` exist and are valid JSON
-- Check browser console for fetch errors
-
-**Changes not appearing?**
-- Hard refresh: `Cmd+Shift+R` (Mac) or `Ctrl+Shift+R` (Windows/Linux)
-- Clear browser cache
-
-**404 page not showing locally?**
-- The Python dev server doesn't auto-redirect to `404.html`
-- To preview: visit `http://localhost:8000/404.html` directly
-- On production (GitHub Pages), it works automatically for any missing page
+**Visit:** [mamacircle.me](https://mamacircle.me)
 
 ---
 
-Made with 💞 for mamas everywhere
+## About the Project
+
+Mama Circle is a community-driven platform designed to combat maternal isolation by creating low-barrier connections between mothers. The site offers:
+
+- **Manifesto & Mission**: A welcoming space that validates the challenges of motherhood
+- **Support Toolkit**: Practical resources for those who want to support new mothers
+- **Community Guidelines**: A Code of Care that centers empathy, consent, and safety
+- **Multilingual Access**: Full support for English and Portuguese speakers
+
+### Design Philosophy
+
+The project embraces simplicity and accessibility:
+- **Zero barriers to entry**: No accounts, no apps, no complicated onboarding
+- **Privacy-first**: Anonymous connection options with clear safety guidelines
+- **Culturally responsive**: Bilingual content honoring diverse maternal experiences
+- **Accessible by design**: Keyboard navigation, screen reader support, reduced motion support
+
+---
+
+## Tech Stack
+
+Built as a lightweight static site with modern web standards:
+
+- **Vanilla JavaScript** (ES6+) - No frameworks, no dependencies
+- **CSS3** with custom properties for theming
+- **Dynamic i18n** system for seamless language switching
+- **Mobile-first responsive design**
+- **GitHub Pages** for zero-cost hosting
+
+### Key Features
+
+- 🌍 **Bilingual Support**: Switch between English and Portuguese
+- ♿ **Accessible**: WCAG 2.1 AA compliant with ARIA labels and keyboard navigation
+- 📱 **Responsive**: Optimized for all screen sizes
+- 🎨 **Themeable**: CSS custom properties for easy visual customization
+- 🎠 **Interactive Components**: Testimonial carousel, tabbed content, smooth scroll
+
+---
+
+## Contributing
+
+We welcome contributions that improve accessibility, add language support, or enhance the user experience.
+
+**To contribute:**
+1. Fork the repository and create a feature branch
+2. Test your changes locally (see below)
+3. Submit a pull request with a clear description
+
+---
+
+## Running Locally
+
+Serve the site over HTTP (required for translation loading):
+
+```bash
+python3 -m http.server 8000
+```
+
+Open [http://localhost:8000](http://localhost:8000) in your browser.
+
+**Test languages:**
+- English: `?lang=en`
+- Portuguese: `?lang=pt`
+
+---
+
+Made with care for mamas everywhere 💞
