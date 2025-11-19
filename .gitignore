@@ -13,3 +13,7 @@
 *.tmp
 *.swp
 *~
+
+# Marketing materials (private)
+MARKETING_BRIEF.md
+SEO_GUIDE.md
